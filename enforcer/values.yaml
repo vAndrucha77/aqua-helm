@@ -41,5 +41,6 @@ resources: {}
 #  requests:
 #    cpu: 100m
 #    memory: 128Mi
+# For recommendations please check the official sizing guide.
 nodeSelector: {}
 tolerations: []

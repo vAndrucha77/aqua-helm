@@ -49,7 +49,7 @@ db:
   auditssl: false
   image:
     repository: database
-    tag: "4.6.20072"
+    tag: "4.6"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -76,13 +76,14 @@ db:
     initialDelaySeconds: 5
     timeoutSeconds: 3
     periodSeconds: 5
-  resources:
-    requests:
-      cpu: 0.1
-      memory: 0.5Gi
-    limits:
-      cpu: 1
-      memory: 10Gi
+  #resources:
+  #  requests:
+  #    cpu: 0.1
+  #    memory: 0.5Gi
+  #  limits:
+  #    cpu: 1
+  #    memory: 10Gi
+  # For recommendations please check the official sizing guide.
   nodeSelector: {}
   tolerations: []
   affinity: {}
@@ -100,13 +101,14 @@ gate:
   replicaCount: 1
   livenessProbe: {}
   readinessProbe: {}
-  resources:
-    requests:
-      cpu: 0.1
-      memory: 0.2Gi
-    limits:
-      cpu: 1
-      memory: 2Gi
+  #resources:
+  #  requests:
+  #    cpu: 0.1
+  #    memory: 0.2Gi
+  #  limits:
+  #    cpu: 1
+  #    memory: 2Gi
+  # For recommendations please check the official sizing guide.
   nodeSelector: {}
   tolerations: []
   affinity: {}
@@ -139,13 +141,14 @@ web:
     storageClass:
     size: 4
     accessMode: ReadWriteOnce
-  resources:
-    requests:
-      cpu: 0.1
-      memory: 0.5Gi
-    limits:
-      cpu: 1
-      memory: 2Gi
+  #resources:
+  #  requests:
+  #    cpu: 0.1
+  #    memory: 0.5Gi
+  #  limits:
+  #    cpu: 1
+  #    memory: 2Gi
+  # For recommendations please check the official sizing guide.
   nodeSelector: {}
   tolerations: []
   affinity: {}

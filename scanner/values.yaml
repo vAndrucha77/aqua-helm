@@ -31,6 +31,7 @@ resources: {}
   #requests:
   #  cpu: 500m
   #  memory: 2Gi
+  # For recommendations please check the official sizing guide.
 nodeSelector: {}
 tolerations: []
 affinity: {}
