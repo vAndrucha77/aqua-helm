@@ -65,8 +65,8 @@ spec:
         {{- end }}
         - name: AQUA_SERVER
           value: {{ .Values.gate.host | default "csp-gateway-svc" }}:{{ .Values.gate.port | default "3622" }}
-        - name: AQUA_INSTALL_PATH
-          value: /var/lib/aquasec
+        #- name: AQUA_INSTALL_PATH
+        #  value: /var/lib/aquasec
           {{- if .Values.enforcerLogicalName }}
         - name: AQUA_LOGICAL_NAME
           value: {{ .Values.enforcerLogicalName }}
@@ -78,12 +78,12 @@ spec:
           value: "1"
         - name: RESTART_CONTAINERS
           value: "no"
-        - name: AQUA_HOST_RUN_PATH
-          value: {{ .Values.hostRunPath }}
+        #- name: AQUA_HOST_RUN_PATH
+        #  value: {{ .Values.hostRunPath }}
         - name: AQUA_RUNC_INTERCEPTION
           value: "{{ .Values.runcInterception }}"
-        - name: SENDING_HOST_IMAGES_DISABLED
-          value: "{{ .Values.sendingHostImagesDisables }}"
+        #- name: SENDING_HOST_IMAGES_DISABLED
+        #  value: "{{ .Values.sendingHostImagesDisables }}"
         volumeMounts:
         - mountPath: /var/run
           name: var-run
@@ -103,6 +103,8 @@ spec:
           readOnly: true
         - mountPath: /opt/aquasec/tmp
           name: aquasec-tmp
+        - mountPath: /data
+          name: aquasec-data
         - mountPath: /opt/aquasec/audit
           name: aquasec-audit
 {{- with .Values.livenessProbe }}
@@ -133,13 +135,16 @@ spec:
           path: /etc
       - name: aquasec
         hostPath:
-          path: /var/lib/aquasec
+          path: /opt/aquasec
       - name: aquasec-tmp
         hostPath:
-          path: /var/lib/aquasec/tmp
+          path: /opt/aquasec/tmp
+      - name: aquasec-data
+        hostPath:
+          path: /opt/aquasec/data
       - name: aquasec-audit
         hostPath:
-          path: /var/lib/aquasec/audit
+          path: /opt/aquasec/audit
       {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}

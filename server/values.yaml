@@ -25,7 +25,7 @@ docker:
   socket:
     path: /var/run/docker.sock # pks - /var/vcap/data/sys/run/docker/docker.sock
 
-dockerless: false
+dockerless: true
 
 db:
   external:
@@ -49,7 +49,7 @@ db:
   auditssl: false
   image:
     repository: database
-    tag: "4.6"
+    tag: "4.6.20072"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -79,10 +79,10 @@ db:
   resources:
     requests:
       cpu: 0.1
-      memory: 0.2Gi
+      memory: 0.5Gi
     limits:
       cpu: 1
-      memory: 1Gi
+      memory: 10Gi
   nodeSelector: {}
   tolerations: []
   affinity: {}
@@ -142,7 +142,7 @@ web:
   resources:
     requests:
       cpu: 0.1
-      memory: 0.2Gi
+      memory: 0.5Gi
     limits:
       cpu: 1
       memory: 2Gi

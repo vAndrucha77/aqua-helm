@@ -36,9 +36,9 @@ spec:
         - "{{ required "Please specify a password for a user associated with the Scanner role!" .Values.password }}"
         - "--host"
         - "http://{{ .Values.server.serviceName }}:{{ .Values.server.port }}"
-        volumeMounts:
-        - mountPath: /var/run/docker.sock
-          name: docker-socket-mount
+        #volumeMounts:
+        #- mountPath: /var/run/docker.sock
+        #  name: docker-socket-mount
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -64,7 +64,7 @@ spec:
       tolerations:
 {{ toYaml .Values.tolerations | indent 6 }}
       {{- end }}
-      volumes:
-      - name: docker-socket-mount
-        hostPath:
-          path: {{ .Values.docker.socket.path }}
+      #volumes:
+      #- name: docker-socket-mount
+      #  hostPath:
+      #    path: {{ .Values.docker.socket.path }}

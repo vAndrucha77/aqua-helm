@@ -24,7 +24,7 @@ rbac:
 
 gate:
   host: csp-gateway-svc # example
-  port: 3622
+  port: 8443
 
 image:
   repository: enforcer
@@ -34,11 +34,12 @@ image:
 livenessProbe: {}
 readinessProbe: {}
 resources: {}
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+#resources:
+#  limits:
+#    cpu: 100m
+#    memory: 128Mi
+#  requests:
+#    cpu: 100m
+#    memory: 128Mi
 nodeSelector: {}
 tolerations: []
